@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const button = document.querySelector("#menu-button"); // Hamburger Icon
   const menu = document.querySelector("#menu"); // Menu
+
+   const navigate = useNavigate();
 
   // button.addEventListener('click', () => {
   //   menu.classList.toggle('hidden');
@@ -60,12 +63,12 @@ export default function NavBar() {
               text-xl"
           >
             <li>
-              <a className="md:p-4 py-2 block hover:text-white" href="#">
+              <a onClick={()=> navigate('/')} className="md:p-4 py-2 block hover:text-white" href="#">
                 Home
               </a>
             </li>
             <li>
-              <a className="md:p-4 py-2 block hover:text-white" href="#">
+              <a onClick={()=> navigate('/about')} className="md:p-4 py-2 block hover:text-white">
                 About Us
               </a>
             </li>

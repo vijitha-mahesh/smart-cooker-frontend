@@ -7,12 +7,8 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <div className='h-screen text-5xl text-center bg-yellow-600'>
             <p>This is the home page.</p>
-            
-            <Link to="/about"> <button style={{background:'green', height:'50px', margin:'100px'}}>about page</button></Link>
-
-            <button onClick={()=> navigate('/about')}>Use this as new to go tho the about page</button>
         </div>
     );
 };
