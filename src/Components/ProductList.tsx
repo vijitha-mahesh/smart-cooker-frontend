@@ -1,45 +1,50 @@
-import { ProductCard } from "./ProductCard";
-
+import { ProductCard } from './ProductCard';
 
 export const ProductList = () => {
-
     const productData2 = [
         {
             name: 'Rice Cooker',
-            description: 'Its a fucking good rice cooker',
+            description:
+                '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
             url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468532/SMARTcooker/oven.jpg'
         },
+
         {
             name: 'Rice Cooker',
-            description: 'Get this and blender whatever',
+            description:
+                '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
             url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468451/SMARTcooker/riceCooker.jpg'
         },
         {
             name: 'Spoon Set',
-            description: 'blaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            description:
+                '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
             url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468428/SMARTcooker/spoonSet.jpg'
         },
         {
             name: 'Gas Cooker',
-            description: 'Hell yeah its working',
+            description:
+                '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
             url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468392/SMARTcooker/gasCooker.jpg'
         },
         {
             name: 'Blender',
-            description: 'Its a fucking good rice cooker',
+            description:
+                '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
             url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468315/SMARTcooker/blender.jpg'
         },
         {
             name: 'Toster',
-            description: 'Its a fucking good rice cooker',
+            description:
+                '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
             url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468648/SMARTcooker/toster.webp'
         }
     ];
 
     return (
-        <div className="grid grid-cols-4 gap-4 ">
+        <div className="grid grid-cols-4 gap-4 justify-around">
             {productData2.map(function (data, name) {
-                return <ProductCard key={name} productData={data}/>;
+                return <ProductCard key={name} productData={data} />;
             })}
         </div>
     );

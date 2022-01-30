@@ -10,7 +10,6 @@ export default function NavBar() {
   // button.addEventListener('click', () => {
   //   menu.classList.toggle('hidden');
   // });
-
   return (
       <div className="sticky top-0 ">
           <nav
@@ -67,7 +66,7 @@ export default function NavBar() {
                           </a>
                       </li>
                       <li>
-                          <a className="md:p-4 py-2 block hover:text-white text-yellow-300" href="#">
+                          <a onClick={() => navigate('/login')} className="md:p-4 py-2 block hover:text-white text-yellow-300" href="#">
                               Login
                           </a>
                       </li>
