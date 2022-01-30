@@ -1,10 +1,7 @@
-import { ProductCard } from './ProductCard';
+import { ProductCard } from "./ProductCard";
+
 
 export const ProductList = () => {
-    const productData1 = {
-        name: 'Rice Cooker',
-        description: 'Its a fucking good rice cooker'
-    };
 
     const productData2 = [
         {
@@ -42,7 +39,7 @@ export const ProductList = () => {
     return (
         <div className="grid grid-cols-4 gap-4 ">
             {productData2.map(function (data, name) {
-                return <ProductCard key={name} productData={data} />;
+                return <ProductCard key={name} productData={data}/>;
             })}
         </div>
     );

@@ -1,5 +1,3 @@
-
-
 type ProductProps = {
     productData: {
         name: string;
@@ -37,9 +35,9 @@ export const ProductCard = (props: ProductProps) => {
                                 <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
                             </svg>
                         </div>
-                        <div className="bg-yellow-200 py-1.5 px-6 rounded-full">
-                            <p z-index="0" className="focus:outline-none text-xs text-yellow-700">
-                                Featured
+                        <div className="bg-blue-700 items-center py-1.5 px-6 rounded-full">
+                            <p z-index="0" className="focus:outline-none text-xs text-white">
+                                Buy Now
                             </p>
                         </div>
                     </div>
@@ -70,7 +68,7 @@ export const ProductCard = (props: ProductProps) => {
                         </div>
                         <div className="flex items-center justify-between py-4">
                             <h2 z-index="0" className="focus:outline-none text-indigo-700 text-xs font-semibold">
-                                Bay Area, San Francisco
+                                See more...
                             </h2>
                             <h3 z-index="0" className="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
                         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {ProductList} from '../Components/ProductList';
+import {ProductList} from '../components/ProductList';
 export interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {

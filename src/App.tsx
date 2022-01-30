@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Footer from './Components/Footer';
-import NavBar from './Components/NavBar';
-import AboutPage from './Pages/About';
-import HomePage from './Pages/Home';
+import Footer from './components/Footer';
+import NavBar from './components/NavBar';
+import AboutPage from './pages/About';
+import HomePage from './pages/Home';
 
 function App() {
     return (
         <div className="App">
-            {/* <NavBar/> */}
             <BrowserRouter>
                 <NavBar />
                 <Routes>

@@ -63,7 +63,7 @@ export default function NavBar() {
                       </li>
                       <li>
                           <a className="md:p-4 py-2 block hover:text-white" href="#">
-                              Lorem
+                              lorem
                           </a>
                       </li>
                       <li>
