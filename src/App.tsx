@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer/Footer';
-import LoginForm from './components/Login/LoginForm';
 import NavBar from './components/NavBar/NavBar';
-import { ProductList } from './containers/Inventory/ProductList';
 import AboutPage from './pages/About';
+import AddProduct from './pages/AddProduct';
 import HomePage from './pages/Home';
 import Login from './pages/Login';
 
@@ -15,10 +14,9 @@ function App() {
                 <NavBar />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/about">
-                        <Route index element={<AboutPage />} />
-                        <Route path=":number" element={<AboutPage />} />
-                    </Route>
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/add-new-product" element={<AddProduct/>} />
+
                     <Route path="/login" element={<Login/>} />
                 </Routes>
                 <Footer />
