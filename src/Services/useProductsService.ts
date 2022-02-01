@@ -10,7 +10,7 @@ export const getProducts = () => {
 export const addProduct = (data: any) => {
     axios({
         method: 'post',
-        url: 'https://61f7e4bd39431d0017eafae7.mockapi.io/products',
+        url: api + 'products',
         headers: {
             'Content-Type': 'application/json'
         },

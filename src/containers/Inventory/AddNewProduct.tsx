@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { addProduct } from '../../Services/useProductsService';
 
-interface RegisterNewProductProps { }
+interface AddNewProductProps { }
 
-const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () => {
+const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [url, setUrl] = useState('');
@@ -78,4 +78,4 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     );
 }
 
-export default RegisterNewProduct;
+export default AddNewProduct;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '../../Services/useProductsService';
-import { ProductCard } from '../../components/products/ProductCard';
-import ProductSearch from '../../components/products/ProductSearch';
+import { ProductCard } from '../../components/products/CustomerPortal/ProductCard';
+import ProductSearch from '../../components/products/CustomerPortal/ProductSearch';
 
 export const ProductList = () => {
     const [productData, setProductData] = useState([]);
