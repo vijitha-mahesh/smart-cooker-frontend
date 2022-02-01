@@ -1,10 +1,12 @@
 type ProductProps = {
     productData: {
+        id:number;
         name: string;
         description: string;
         url: string;
     };
 };
+
 
 export const ProductCard = (props: ProductProps) => {
     return (
