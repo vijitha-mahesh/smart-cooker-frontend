@@ -46,27 +46,25 @@ export default function NavBar() {
               text-xl"
                   >
                       <li>
-                          <a onClick={() => navigate('/')} className="md:p-4 py-2 block hover:text-white" href="#">
+                          <a onClick={() => navigate('/')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
                               Home
                           </a>
                       </li>
                       <li>
-                          <a onClick={() => navigate('/about')} className="md:p-4 py-2 block hover:text-white">
+                          <a onClick={() => navigate('/about')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
                               About Us
                           </a>
                       </li>
                       <li>
-                          <a className="md:p-4 py-2 block hover:text-white" href="#">
-                              Lorem
+                          <a onClick={() => navigate('/add-new-product')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
+                              New Product
                           </a>
                       </li>
                       <li>
-                          <a className="md:p-4 py-2 block hover:text-white" href="#">
-                              lorem
-                          </a>
+                          <a className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">lorem</a>
                       </li>
                       <li>
-                          <a onClick={() => navigate('/login')} className="md:p-4 py-2 block hover:text-white text-yellow-300" href="#">
+                          <a onClick={() => navigate('/login')} className="md:p-4 py-2 block hover:text-white text-yellow-300 hover:cursor-pointer">
                               Login
                           </a>
                       </li>
