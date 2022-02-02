@@ -17,6 +17,7 @@ export const ProductList = () => {
             <div className=" p-5 m-auto justify-center">
                 <ProductSearch />
             </div>
+            
             <div className="grid grid-cols-4 gap-4 justify-around">
                 {productData.map(function (data, name) {
                     return <ProductCard key={name} productData={data} />;

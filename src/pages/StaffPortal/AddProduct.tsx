@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddNewProduct from '../../containers/Inventory/AddNewProduct';
+import AddNewProduct from '../../containers/StaffPortal/Inventory/AddNewProduct';
 
 export default function AddProduct() {
   return (

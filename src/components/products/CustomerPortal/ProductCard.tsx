@@ -1,20 +1,22 @@
-type ProductProps = {
-    productData: {
-        id:number;
-        name: string;
-        description: string;
-        url: string;
-    };
-};
+import { Link, useNavigate } from 'react-router-dom';
+import { ProductProps } from '../../../types/Product';
+import { setGlobalState, useGlobalState } from '../../../GlobalState';
 
 
 export const ProductCard = (props: ProductProps) => {
+    const navigate = useNavigate();
+
+    const buttonHandler = () => {
+        setGlobalState('selectedProduct', props.productData.id);
+        navigate('/product-information');
+    };
+
     return (
-        <div>
+         <div onClick={() => buttonHandler()}>
+         {/* <div onClick={() => navigate('/product-information/' + props.productData.id)}>  */}
+            {/* <Link to={`/view-products/id=${props.product.id}`}> */}
             <div z-index="0" className="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-xl hover:shadow-blue-200 hover:cursor-pointer">
                 <div>
-                    {/* <img alt="product image" src={require(props.productData.url)} z-index="0" className="focus:outline-none w-full h-44" /> */}
-                    {/* <img alt="product image" src={require('../Assets/Images/RiceCooker.jpg')} z-index="0" className="focus:outline-none w-full h-44" /> */}
                     <img alt="product image" src={props.productData.url} z-index="0" className="focus:outline-none w-full h-44" />
                 </div>
                 <div className="bg-white">
@@ -37,11 +39,13 @@ export const ProductCard = (props: ProductProps) => {
                                 <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
                             </svg>
                         </div>
-                        <div className="bg-blue-500  items-center py-1.5 px-6 rounded-md hover:shadow-lg">
-                            <p z-index="0" className="focus:outline-none text-xs text-white">
-                                Buy Now
-                            </p>
-                        </div>
+                        <Link to={`/`}>
+                            <div className="bg-blue-500  items-center py-1.5 px-6 rounded-md hover:shadow-lg">
+                                <p z-index="100" className="focus:outline-none text-xs text-white">
+                                    Buy Now
+                                </p>
+                            </div>
+                        </Link>
                     </div>
                     <div className="p-4">
                         <div className="flex items-center">

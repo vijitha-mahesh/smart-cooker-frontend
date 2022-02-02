@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addProduct } from '../../Services/useProductsService';
+import { addProduct } from '../../../Services/useProductsService';
 
 interface AddNewProductProps { }
 
