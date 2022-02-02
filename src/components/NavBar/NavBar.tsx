@@ -17,7 +17,7 @@ export default function NavBar() {
           flex flex-wrap
           items-center
           justify-between
-          w-full
+          w-full 
           h-20
           py-4
           md:py-0
@@ -51,17 +51,14 @@ export default function NavBar() {
                           </a>
                       </li>
                       <li>
+                          <a onClick={() => navigate('/staff/all-products')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
+                              staff
+                          </a>
+                      </li>
+                      <li>
                           <a onClick={() => navigate('/about')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
                               About Us
                           </a>
-                      </li>
-                      <li>
-                          <a onClick={() => navigate('/add-new-product')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
-                              New Product
-                          </a>
-                      </li>
-                      <li>
-                          <a className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">lorem</a>
                       </li>
                       <li>
                           <a onClick={() => navigate('/login')} className="md:p-4 py-2 block hover:text-white text-yellow-300 hover:cursor-pointer">

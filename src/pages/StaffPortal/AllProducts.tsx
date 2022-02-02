@@ -1,5 +1,5 @@
 import React from 'react';
-import AllProductsTable from '../../components/products/StaffPortal/AllProductsTable';
+import AllProductsTable from '../../containers/StaffPortal/Inventory/ProductsTable';
 
 export default function AllProducts() {
   return (
