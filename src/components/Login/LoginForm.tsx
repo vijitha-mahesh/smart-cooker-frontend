@@ -1,6 +1,6 @@
 export default function LoginForm() {
     return (
-        <div className="w-full max-w-xs m-auto pt-32">
+        <div className="w-full max-w-xs m-auto">
             <form className="bg-white shadow-md shadow-blue-500 rounded px-8 pt-6 pb-8 mb-4 w-96 ">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>

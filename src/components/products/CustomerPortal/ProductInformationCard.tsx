@@ -1,61 +1,41 @@
+import { useEffect, useState } from 'react';
+import { getProductInformation, getProducts } from '../../../Services/useProductsService';
+
 export type idProp = {
-        id: number;
+    id: number;
 };
 
-
-const productData =[
-    {
-        name: 'Rice Cooker',
-        description:
-            '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
-        url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468532/SMARTcooker/oven.jpg'
-    },
-
-    {
-        name: 'Rice Cooker',
-        description:
-            '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
-        url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468451/SMARTcooker/riceCooker.jpg'
-    },
-    {
-        name: 'Spoon Set',
-        description:
-            '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
-        url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468428/SMARTcooker/spoonSet.jpg'
-    },
-    {
-        name: 'Gas Cooker',
-        description:
-            '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
-        url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468392/SMARTcooker/gasCooker.jpg'
-    },
-    {
-        name: 'Blender',
-        description:
-            '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
-        url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468315/SMARTcooker/blender.jpg'
-    },
-    {
-        name: 'Toster',
-        description:
-            '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat nam quidem blanditiis provident itaque rerum. Non, veritatis esse, ex alias rerum ipsum iure consequuntur ipsa amet, pariatur reprehenderit accusamus.',
-        url: 'https://res.cloudinary.com/vijitha-mahesh/image/upload/v1643468648/SMARTcooker/toster.webp'
-    }
-];
-
-
 export const ProductInformationCard = (props: idProp) => {
+
+    const [productData2, setProductData] = useState([]);
+    
+    let index = props.id.toString();
+
+    useEffect(() => {
+
+    console.log(index + 'index');
+
+          getProductInformation(index)
+         .then((res:any) => {
+            // console.log(res); 
+            setProductData(res.data);        
+         } ).catch(err => {
+                // console.log(err);
+            });
+    }, []);
+
+    // console.log(productData2);
+
+
     return (
         <section className="text-gray-700 body-font overflow-hidden bg-white">
-            <div className="text-9xl bg bg-green-400">{productData[props.id].name} </div>
+            {/* <div className="text-9xl bg bg-green-400">{productData[props.id].name} </div> */}
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-2/3 p-5 mx-auto flex flex-wrap shadow shadow-sky-700">
-                    <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" />
+                    <img alt="ecommerce" src={productData2.url} className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" />
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                        {/* <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 pb-7">{productData[props.id]}</h1> */}
-                        <p className="leading-relaxed">
-                            {}
-                        </p>
+                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 pb-7">{productData2.name}</h1> 
+                        <p className="leading-relaxed">{productData2.description}</p>
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                             <div className="flex ml-6 items-center">
                                 <span className="mr-3">Outlet</span>
