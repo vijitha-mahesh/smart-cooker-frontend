@@ -9,6 +9,7 @@ import Login from './pages/Common/Login';
 import AllProducts from './pages/StaffPortal/AllProducts';
 import ProductInformationPage from './pages/Common/ProductInformationPage';
 import { ProductInformation } from './containers/Common/ProductInformation';
+import ImageUpload from './components/ImageUpload';
 
 function App() {
     return (
@@ -20,12 +21,14 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/product-information" element={<ProductInformation/>}/> 
-                    
+                    <Route path="/product-information" element={<ProductInformation />} />
+
                     {/* staff routes */}
                     <Route path="/add-new-product" element={<AddProduct />} />
                     <Route path="/staff/all-products" element={<AllProducts />} />
                     {/* customer routes */}
+                    <Route path="/test-image-upload" element={<ImageUpload/>} />
+                    {/*test routs*/}
                 </Routes>
                 <Footer />
             </BrowserRouter>
