@@ -4,7 +4,7 @@ import { storage } from '../firebase';
 export default function ImageUpload() {
 
     var fileType = new File([''], '', {
-        type: 'text/plain'
+        type: 'image'
     });
 
     const [image, setImage] = useState<File>(fileType);

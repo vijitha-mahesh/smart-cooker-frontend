@@ -6,21 +6,6 @@ export const getProducts = async () => {
     return await axios.get(api + 'products');
 };
 
-// export const getProductInformation = (index: string) => {
-//     console.log(index + '17 line');
-//     return axios
-//         .get(`https://61f7e4bd39431d0017eafae7.mockapi.io/products/${index}`)
-//         .then(function (response) {
-//             //handle success
-
-//             return response;
-//         })
-//         .catch(function (response) {
-//             //handle error
-//             console.log(response);
-//         });
-// };
-
 export const getProductInformation = async (id: string) => {
     return await axios({
         method: 'get',
