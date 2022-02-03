@@ -1,41 +1,42 @@
 import { useEffect, useState } from 'react';
-import { getProductInformation, getProducts } from '../../../Services/useProductsService';
+import { getProductInformation } from '../../../Services/useProductsService';
 
 export type idProp = {
     id: number;
 };
 
-export const ProductInformationCard = (props: idProp) => {
+type productData = {
+    id: number;
+    name: string;
+    description: string;
+    url: string;
+};
 
-    const [productData2, setProductData] = useState([]);
-    
+export const ProductInformationCard = (props: idProp) => {
+    const [productData2, setProductData] = useState<productData | null>(null);
+
     let index = props.id.toString();
 
     useEffect(() => {
+        console.log(index + 'index');
 
-    console.log(index + 'index');
-
-          getProductInformation(index)
-         .then((res:any) => {
-            // console.log(res); 
-            setProductData(res.data);        
-         } ).catch(err => {
+        getProductInformation(index)
+            .then((res: any) => {
+                // console.log(res);
+                setProductData(res.data);
+            })
+            .catch((err) => {
                 // console.log(err);
             });
     }, []);
-
-    // console.log(productData2);
-
-
     return (
         <section className="text-gray-700 body-font overflow-hidden bg-white">
-            {/* <div className="text-9xl bg bg-green-400">{productData[props.id].name} </div> */}
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-2/3 p-5 mx-auto flex flex-wrap shadow shadow-sky-700">
-                    <img alt="ecommerce" src={productData2.url} className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" />
+                    <img alt="ecommerce" src={productData2?.url} className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" />
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 pb-7">{productData2.name}</h1> 
-                        <p className="leading-relaxed">{productData2.description}</p>
+                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 pb-7">{productData2?.name}</h1>
+                        <p className="leading-relaxed">{productData2?.description}</p>
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                             <div className="flex ml-6 items-center">
                                 <span className="mr-3">Outlet</span>
@@ -54,9 +55,10 @@ export const ProductInformationCard = (props: idProp) => {
                                 </div>
                             </div>
                         </div>
+
                         <div className="flex">
                             <span className="title-font font-medium text-2xl  text-gray-900">RS. 3000.00</span>
-                            <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy</button>
+                            <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy Now</button>
                         </div>
                     </div>
                 </div>
