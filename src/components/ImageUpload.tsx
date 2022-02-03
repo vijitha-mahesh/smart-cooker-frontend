@@ -13,7 +13,6 @@ export default function ImageUpload() {
     const [progress, setProgress] = useState(0);
 
     const handleChange = (e: any) => {
-        console.log('handle change image upload');
         if (e.target.files[0]) {
             setImage(e.target.files[0]);
         }
@@ -31,7 +30,7 @@ export default function ImageUpload() {
                 console.log(error);
             },
             () => {
-                console.log('image uploadddddddddddddddd');
+               
                 storage
                     .ref('images')
                     .child(image.name)
