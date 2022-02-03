@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const api = 'https://61f7e4bd39431d0017eafae7.mockapi.io/';
 
-export const getProducts = () => {
-    return axios.get(api + 'products');
+export const getProducts = async () => {
+    return await axios.get(api + 'products');
 };
 
 // export const getProductInformation = (index: string) => {
@@ -21,22 +21,21 @@ export const getProducts = () => {
 //         });
 // };
 
-export const getProductInformation = (id: string) => {
-    return axios({
+export const getProductInformation = async (id: string) => {
+    return await axios({
         method: 'get',
         url: `https://61f7e4bd39431d0017eafae7.mockapi.io/products/${id}`,
         headers: {
             'Content-Type': 'application/json'
         }
-    })
-    .then(function (response) {
+    }).then(function (response) {
         console.log(response);
         return response;
     });
 };
 
-export const addProduct = (data: any) => {
-    axios({
+export const addProduct = async (data: any) => {
+    await axios({
         method: 'post',
         url: api + 'products',
         headers: {
