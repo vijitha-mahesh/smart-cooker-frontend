@@ -8,9 +8,13 @@ export const ProductList = () => {
     // const service = useProductsService();
 
     useEffect(() => {
+       // console.log("use effect function start");
         // Update the document title using the browser API
-        getProducts().then((res) => setProductData(res.data));
+          getProducts().then((res) => setProductData(res.data));
+      //  getProducts().then((res) => console.log('print of res of data ' +res.data));
     }, []);
+
+  //  console.log(productData + ' response product data');
 
     return (
         <>

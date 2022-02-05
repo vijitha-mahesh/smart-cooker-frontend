@@ -16,7 +16,7 @@ export default function NavBar() {
             <nav
                 className="
           flex flex-wrap
-          items-center
+          items-center 
           justify-between
           w-full 
           h-20

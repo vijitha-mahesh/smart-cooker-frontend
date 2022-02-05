@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { addProduct } from '../../../Services/useProductsService';
 import { storage } from '../../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 interface AddNewProductProps {}
 
 const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
+    const navigate = useNavigate();
+
     var fileType = new File([''], '', {
         type: 'image'
     });
@@ -50,14 +53,16 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
     const handleSubmit = async (e: any, status: any) => {
         e.preventDefault();
 
-        await handleImageUpload();
-
         var data = {
-            "name": name,
-            "description": description,
-            "url": url
+            name: name,
+            description: description,
+            url: url
         };
-        addProduct(data);
+
+        await handleImageUpload();
+        // await addProduct(data).then();
+        await addProduct(data);
+        navigate('/');
     };
 
     return (
@@ -91,7 +96,6 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                             }}
                         />
                     </div>
-
 
                     <div className="mb-6 flex justify-center">
                         <div className="rounded-lg shadow-xl bg-gray-50 w-full ">
