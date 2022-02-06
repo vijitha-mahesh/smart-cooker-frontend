@@ -17,9 +17,6 @@ export const getProducts = async () => {
     });
 };
 
-// export const getProducts = async () => {
-//     return await axios.get(api + 'products');
-// };
 
 export const getProductInformation = async (id: string) => {
     return await axios({
@@ -59,3 +56,16 @@ export const addProduct = async (data: any) => {
         });
 };
 
+export const deleteProduct = async (e:number) => {
+   await axios
+       .delete(api + `products/${e}`)
+       .then(function (response) {
+           //handle success
+           console.log(response);
+           return response;
+       })
+       .catch(function (response) {
+           //handle error
+            console.log(response);
+       });
+};

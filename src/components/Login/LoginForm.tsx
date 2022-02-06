@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { SyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalState } from '../../GlobalState';
 import { submitLoginData } from '../../Services/useAuthService';
 
 
@@ -24,6 +25,9 @@ export default function LoginForm() {
         });
        // console.log('end of the flow');
     };
+
+    
+
 
     return (
         <div className=" max-w-xs m-auto">

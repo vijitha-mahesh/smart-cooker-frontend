@@ -24,7 +24,12 @@ export default function ProductsTable() {
 
                     <div className="flex items-center justify-between">
                         <div className="lg:ml-40 ml-10 space-x-8">
-                            <button onClick={() => navigate('/add-new-product')} className="bg-indigo-600 px-4 py-2 mr-16 rounded-md text-white font-semibold tracking-wide cursor-pointer hover:shadow-lg">Create New Product</button>
+                            <button
+                                onClick={() => navigate('/add-new-product')}
+                                className="bg-indigo-600 px-4 py-2 mr-16 rounded-md text-white font-semibold tracking-wide cursor-pointer hover:shadow-lg"
+                            >
+                                Create New Product
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -52,6 +57,7 @@ export default function ProductsTable() {
                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-600 uppercase tracking-wider">Created at</th>
                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-600 uppercase tracking-wider">QTY</th>
                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-600 uppercase tracking-wider"></th>
                                 </tr>
                             </thead>
                             <tbody>

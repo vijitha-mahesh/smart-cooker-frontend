@@ -17,13 +17,13 @@ export const submitLoginData = async (data: any) => {
             //handle success
             // console.log('here is the response :' + response.data.success);
             setGlobalState('jwt', response.data.token);
-            console.log(useGlobalState);
+             setGlobalState('isLogedIn',true);
+
             return response;
         })
         .catch(function (response) {
             //handle error
-             console.log(response);
+            console.log(response);
             //console.log('catch ');
         });
-    console.log('response');
 };
