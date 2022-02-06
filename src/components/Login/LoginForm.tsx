@@ -1,33 +1,35 @@
-import axios from "axios";
-import { SyntheticEvent, useState } from "react";
-import { submitLoginData } from "../../Services/useAuthService";
+import axios from 'axios';
+import { SyntheticEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalState } from '../../GlobalState';
+import { submitLoginData } from '../../Services/useAuthService';
 
 export default function LoginForm() {
+    const navigate = useNavigate();
 
-    const[username, setUsername] = useState('');
-    const[password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-
-    function timeout(delay: number) {
-        console.log("delay");
-        return new Promise((res) => setTimeout(res, delay));
-    }
-
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
         var data = {
             email: username,
             password: password
         };
-        console.log('handle submit ' + data); 
-        // await addProduct(data).then();
-        await submitLoginData(data);
-        console.log('end of the flow');
-    };;
+        // console.log('handle submit ' + data);
 
+        submitLoginData(data).then(() => {
+            navigate('/');
+        });
+        // console.log('end of the flow');
+    };
 
     return (
-        <div className=" max-w-xs m-auto">
-            <form className="bg-white shadow-md shadow-blue-500 rounded px-8 pt-6 pb-8 mb-4 w-96 ">
+        <div className=" m-auto w-2/4 h-96 pt-14">
+            <div className=" pb-5 mb-3">
+                <h1 className="font-bold text-4xl text-center text-sky-700">Login</h1>
+            </div>
+            <form onSubmit={handleSubmit} className="bg-white shadow-md shadow-blue-500 rounded px-8 pt-14 pb-14 mb-4  ">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
                     <input
@@ -48,15 +50,9 @@ export default function LoginForm() {
                         type="password"
                         placeholder="******************"
                     />
-                    <p className="text-red-500 text-xs italic">Please choose a password.</p>
                 </div>
                 <div className="flex items-center justify-between">
-                    <button
-                        onClick={(e) => {
-                            handleSubmit(e);
-                        }}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    >
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Sign In
                     </button>
                     <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">Forgot Password?</a>

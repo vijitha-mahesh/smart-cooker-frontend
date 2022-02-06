@@ -22,7 +22,7 @@ export const ProductList = () => {
                 <ProductSearch />
             </div>
             
-            <div className="grid grid-cols-4 gap-4 justify-around">
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-around">
                 {productData.map(function (data, name) {
                     return <ProductCard key={name} productData={data} />;
                 })}
