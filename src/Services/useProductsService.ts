@@ -42,7 +42,7 @@ export const getProductInformation = async (id: string) => {
 export const addProduct = async (data: any) => {
     await axios({
         method: 'post',
-        url: mockApi + 'products',
+        url: api + 'products',
         headers: {
             'Content-Type': 'application/json'
         },

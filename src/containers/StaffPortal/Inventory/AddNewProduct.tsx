@@ -19,32 +19,38 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
     const [image, setImage] = useState<File>(fileType);
     const [progress, setProgress] = useState(0);
 
-    const handleImageUpload = async () => {
-        // console.log('3 : came to Image upload');
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            'state_changed',
-            (snapshot) => {
-                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                setProgress(progress);
-            },
-            (error) => {
-                console.log(error);
-            },
-            () => {
-                storage
-                    .ref('images')
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then((url) => {
-                        setUrl(url);
-                    });
-            }
-        );
+    const handleImageUpload = (e: any) => {
+        e.preventDefault();
+        console.log('3 : came to Image upload');
+
+         if (image) {
+             console.log(image.name);
+             const uploadTask = storage.ref(`images/${image.name}`).put(image);
+             uploadTask.on(
+                 'state_changed',
+                 (snapshot) => {
+                     const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                     setProgress(progress);
+                 },
+                 (error) => {
+                     console.log(error);
+                 },
+                 () => {
+                     storage
+                         .ref('images')
+                         .child(image.name)
+                         .getDownloadURL()
+                         .then((url) => {
+                             setUrl(url);
+                         });
+                 }
+             );
+         }
+        console.log('URL :' + url);
     };
 
     const handleImageFieldChange = (e: any) => {
-        // console.log('1 : handle Image filed change');
+        console.log('1 : handle Image filed change');
         if (e.target.files[0]) {
             setImage(e.target.files[0]);
         }
@@ -52,17 +58,18 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
 
     const handleSubmit = async (e: any, status: any) => {
         e.preventDefault();
-
+        console.log('1 handle submit');
         var data = {
             name: name,
             description: description,
             url: url
         };
-
-        await handleImageUpload();
+        await handleImageUpload(e);
         // await addProduct(data).then();
-        await addProduct(data);
-        navigate('/');
+        if(url != ''){
+            await addProduct(data);
+            navigate('/');
+        }
     };
 
     return (
