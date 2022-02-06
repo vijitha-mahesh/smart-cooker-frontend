@@ -68,7 +68,7 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
         // await addProduct(data).then();
         if(url != ''){
             await addProduct(data);
-            navigate('/');
+            navigate('/staff/all-products');
         }
     };
 

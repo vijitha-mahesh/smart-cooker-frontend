@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {ProductListTableRow} from '../../../components/products/StaffPortal/ProductListTableRow';
+import { ProductListTableRow } from '../../../components/products/StaffPortal/ProductListTableRow';
 import { getProducts } from '../../../Services/useProductsService';
 
 export default function ProductsTable() {
     const [productData, setProductData] = useState([]);
-       const navigate = useNavigate();
+    const navigate = useNavigate();
     // const service = useProductsService();
 
     useEffect(() => {
         // Update the document title using the browser API
         getProducts().then((res) => setProductData(res.data));
     }, []);
-    
 
     return (
         <div className="p-8 rounded-md w-full ">
