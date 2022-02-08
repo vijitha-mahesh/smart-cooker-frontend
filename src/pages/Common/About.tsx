@@ -6,8 +6,10 @@ export interface IAboutPageProps {}
 const AboutPage: React.FunctionComponent<IAboutPageProps> = (props) => {
 
     return (
-        <div className="bg-gray-500 h-screen text-center">
-            <p className='text-5xl'>This is the about page.</p>
+        <div className="flex flex-col justify-center h-screen items-center">
+
+                <p className="text-5xl">This is the about page.</p>
+
         </div>
     );
 };

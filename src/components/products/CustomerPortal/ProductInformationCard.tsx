@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import {AuthContext} from '../../../contexts/AuthContext';
 import { getProductInformation } from '../../../Services/useProductsService';
 
 export type idProp = {
@@ -17,6 +18,8 @@ export const ProductInformationCard = (props: idProp) => {
     const [productData2, setProductData] = useState<productData | null>(null);
 
     let index = props.id.toString();
+
+       const { user, dispatch } = useContext(AuthContext);
 
     useEffect(() => {
         console.log(index + 'index');
@@ -59,7 +62,7 @@ export const ProductInformationCard = (props: idProp) => {
 
                         <div className="flex">
                             <span className="title-font font-medium text-2xl  text-gray-900">RS. 3000.00</span>
-                            <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy Now</button>
+                            {user && <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy Now</button>}
                         </div>
                     </div>
                 </div>

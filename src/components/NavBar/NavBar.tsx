@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavLogo from '../../assets/Images/NavLogo.png';
 import { AuthContext } from '../../contexts/AuthContext';
+import profileImage from '../../assets/Images/profile.png';
 
 export default function NavBar() {
     const button = document.querySelector('#menu-button'); // Hamburger Icon
@@ -11,17 +12,23 @@ export default function NavBar() {
 
     const { user, dispatch } = useContext(AuthContext);
 
+    useEffect(() => {
+        console.log(user);
+        console.log(user.Role);
+    }, []);
+
     const handleLogout = () => {
         localStorage.removeItem('userToken');
-        dispatch({ type: 'DeleteUser' });
+        //dispatch({ type: 'DeleteUser' });
         navigate('/login');
+        window.location.reload();
     };
 
     // button.addEventListener('click', () => {
     //   menu.classList.toggle('hidden');
     // });
     return (
-        <div className="sticky top-0 ">
+        <div className="sticky top-0 z-10">
             <nav
                 className="
           flex flex-wrap
@@ -66,14 +73,23 @@ export default function NavBar() {
                             </a>
                         </li>
                         <li>
-                            <a onClick={() => navigate('/staff/all-products')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
-                                staff
-                            </a>
+                            {(user.Role == 'inventory_member' || (user.Role == 'sales_agent' && user)) && (
+                                <a onClick={() => navigate('/staff/all-products')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
+                                    Dash Board
+                                </a>
+                            )}
                         </li>
                         <li>
                             <a onClick={() => navigate('/about')} className="md:p-4 py-2 block hover:text-white hover:cursor-pointer">
                                 About Us
                             </a>
+                        </li>
+                        <li>
+                            {user && (
+                                <div onClick={() => navigate('/profile')} className="flex-shrink-0 w-10 h-10 mt-2">
+                                    <img alt="profile" src={profileImage} className="w-full h-full rounded-full  hover:cursor-pointer hover:shadow hover:shadow-white" />
+                                </div>
+                            )}
                         </li>
 
                         <li>

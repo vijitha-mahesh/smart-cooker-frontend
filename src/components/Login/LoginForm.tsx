@@ -8,6 +8,7 @@ export default function LoginForm() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState(false);
 
     const { dispatch } = useContext(AuthContext);
 
@@ -17,12 +18,17 @@ export default function LoginForm() {
             email: username,
             password: password
         };
+
         // console.log('handle submit ' + data);
 
         submitLoginData(data).then((res) => {
-            dispatch({ type: 'LoadUser' });
-            //  console.log(localStorage.getItem("userToken"));
-            navigate('/');
+            if (localStorage.getItem('userToken')) {
+                dispatch({ type: 'LoadUser' });
+                //  console.log(localStorage.getItem("userToken"));
+                navigate('/');
+            }else{
+                setErrorMessage(true);
+            }
         });
         // console.log('end of the flow');
     };
@@ -32,6 +38,7 @@ export default function LoginForm() {
             <div className=" pb-5 mb-3">
                 <h1 className="font-bold text-4xl text-center text-sky-700">Login</h1>
             </div>
+
             <form onSubmit={handleSubmit} className="bg-white shadow-md shadow-blue-500 rounded px-8 pt-14 pb-14 mb-4  ">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
@@ -61,6 +68,11 @@ export default function LoginForm() {
                     <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">Forgot Password?</a>
                 </div>
             </form>
+            {errorMessage && (
+                <div className=" pb-5 mb-3">
+                    <h1 className="font-bold text-xl text-center text-red-600">Email or password incorrect</h1>
+                </div>
+            )}
         </div>
     );
 }
