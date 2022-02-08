@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { SyntheticEvent, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGlobalState } from '../../GlobalState';
+import { AuthContext } from '../../contexts/AuthContext';
 import { submitLoginData } from '../../Services/useAuthService';
 
 export default function LoginForm() {
@@ -9,6 +8,8 @@ export default function LoginForm() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const { dispatch } = useContext(AuthContext);
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -18,7 +19,9 @@ export default function LoginForm() {
         };
         // console.log('handle submit ' + data);
 
-        submitLoginData(data).then(() => {
+        submitLoginData(data).then((res) => {
+            dispatch({ type: 'LoadUser' });
+            //  console.log(localStorage.getItem("userToken"));
             navigate('/');
         });
         // console.log('end of the flow');
