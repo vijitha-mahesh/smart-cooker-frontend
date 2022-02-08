@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
-import AboutPage from './pages/CustomerPortal/About';
+import AboutPage from './pages/Common/About';
 import AddProduct from './pages/StaffPortal/AddProduct';
 import HomePage from './pages/CustomerPortal/Home';
 import Login from './pages/Common/Login';
 import AllProducts from './pages/StaffPortal/AllProducts';
 import { ProductInformation } from './containers/Common/ProductInformation';
 import AuthContextProvider from './contexts/AuthContext';
+import ProfilePage from './pages/Common/ProfilePage';
 
 
 function App() {
@@ -15,12 +16,13 @@ function App() {
         <div className="App">
             <AuthContextProvider>
                 <BrowserRouter>
-                    <NavBar />
+                    <NavBar/>
                     <Routes>
                         {/* common routes */}
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/profile" element={<ProfilePage/>} />
                         <Route path="/product-information" element={<ProductInformation />} />
 
                         {/* staff routes */}
