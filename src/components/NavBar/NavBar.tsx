@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavLogo from '../../assets/Images/NavLogo.png';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function NavBar() {
     const button = document.querySelector('#menu-button'); // Hamburger Icon
     const menu = document.querySelector('#menu'); // Menu
 
     const navigate = useNavigate();
+
+    const { user, dispatch } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        localStorage.removeItem('userToken');
+        dispatch({ type: 'DeleteUser' });
+        navigate('/login');
+    };
 
     // button.addEventListener('click', () => {
     //   menu.classList.toggle('hidden');
@@ -39,8 +48,7 @@ export default function NavBar() {
                         </div>
                     </a>
                 </div>
-                <svg xmlns="<http://www.w3.org/2000/svg>" id="menu-button" className="h-6 w-6 cursor-pointer md:hidden block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                </svg>
+                <svg xmlns="<http://www.w3.org/2000/svg>" id="menu-button" className="h-6 w-6 cursor-pointer md:hidden block" fill="none" viewBox="0 0 24 24" stroke="currentColor"></svg>
 
                 <div className="hidden w-full md:flex md:items-center md:w-auto " id="menu">
                     <ul
@@ -67,10 +75,18 @@ export default function NavBar() {
                                 About Us
                             </a>
                         </li>
+
                         <li>
-                            <a onClick={() => navigate('/login')} className="md:p-4 py-2 block hover:text-white text-yellow-300 hover:cursor-pointer">
-                                Login
-                            </a>
+                            {!user && (
+                                <a onClick={() => navigate('/login')} className="md:p-4 py-2 block hover:text-white text-yellow-300 hover:cursor-pointer">
+                                    Login
+                                </a>
+                            )}
+                            {user && (
+                                <a onClick={() => handleLogout()} className="md:p-4 py-2 block hover:text-white text-yellow-300 hover:cursor-pointer">
+                                    Log out
+                                </a>
+                            )}
                         </li>
                     </ul>
                 </div>
