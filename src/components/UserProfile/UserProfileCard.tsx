@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import profileImage from '../../assets/Images/profile.png';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export default function UserProfileCard() {
     const { user, dispatch } = useContext(AuthContext);
-
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="container mx-auto my-60">
@@ -15,7 +14,7 @@ export default function UserProfileCard() {
                         </div>
 
                         <div className="mt-16">
-                            <h1 className="font-bold text-center text-3xl text-gray-900">Vijitha Mahesh</h1>
+                            <h1 className="font-bold text-center text-3xl text-gray-900">Lorem Ipsum</h1>
 
                             <p>
                                 <span></span>
