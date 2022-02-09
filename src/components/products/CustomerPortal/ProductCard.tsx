@@ -34,7 +34,7 @@ export const ProductCard = (props: ProductProps) => {
                             </svg>
                         </div>
 
-                        {(user) && (
+                        {user && (
                             <Link to={`/`}>
                                 <div className="bg-blue-500  items-center py-1.5 px-6 rounded-md hover:shadow-lg">
                                     <p z-index="100" className="focus:outline-none text-xs text-white">
@@ -45,8 +45,8 @@ export const ProductCard = (props: ProductProps) => {
                         )}
                     </div>
                     <div className="p-4">
-                        <div className="flex items-center">
-                            <h2 z-index="0" className="focus:outline-none text-lg font-semibold">
+                        <div className="flex items-center py-10 h-16 overflow-hidden">
+                            <h2 z-index="0" className="focus:outline-none text-lg font-semibold ">
                                 {props.productData.name}
                                 {/* Get the product name from props */}
                             </h2>
@@ -54,7 +54,7 @@ export const ProductCard = (props: ProductProps) => {
                                 4 days ago
                             </p>
                         </div>
-                        <p z-index="0" className="focus:outline-none text-xs text-gray-600 mt-2">
+                        <p z-index="0" className="focus:outline-none text-xs text-gray-600 mt-2 h-14 overflow-hidden">
                             {props.productData.description}
                         </p>
                         <div className="flex mt-4">

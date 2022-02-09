@@ -50,7 +50,7 @@ const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
     const [user, dispatch] = useReducer(userReducer, '', () => {
         const token = localStorage.getItem('userToken');
-        console.log(token);
+       
         if (token) {
             let user = jwt_decode<userToken>(token || '') || null;
             return {
