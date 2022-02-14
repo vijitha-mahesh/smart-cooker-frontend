@@ -19,7 +19,9 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
     const [quentity, setQuentity] = useState('');
 
     const [image, setImage] = useState<File>(fileType);
+
     const [progress, setProgress] = useState(0);
+    const [IsProgressWindow, setIsProgressWindow] = useState(false);
 
     const handleImageUpload = (e: any) => {
         e.preventDefault();
@@ -77,6 +79,7 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
 
     return (
         <div className="h-full w-full">
+            <h1>{progress} asad</h1>
             <div className="pt-5 pb-5 mb-3">
                 <h1 className="font-bold text-4xl text-center text-sky-700">Add New Product</h1>
             </div>
