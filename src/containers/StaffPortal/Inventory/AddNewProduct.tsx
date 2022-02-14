@@ -14,7 +14,9 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
     const [url, setUrl] = useState('');
+    const [quentity, setQuentity] = useState('');
 
     const [image, setImage] = useState<File>(fileType);
     const [progress, setProgress] = useState(0);
@@ -23,29 +25,29 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
         e.preventDefault();
         console.log('3 : came to Image upload');
 
-         if (image) {
-             console.log(image.name);
-             const uploadTask = storage.ref(`images/${image.name}`).put(image);
-             uploadTask.on(
-                 'state_changed',
-                 (snapshot) => {
-                     const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                     setProgress(progress);
-                 },
-                 (error) => {
-                     console.log(error);
-                 },
-                 () => {
-                     storage
-                         .ref('images')
-                         .child(image.name)
-                         .getDownloadURL()
-                         .then((url) => {
-                             setUrl(url);
-                         });
-                 }
-             );
-         }
+        if (image) {
+            console.log(image.name);
+            const uploadTask = storage.ref(`images/${image.name}`).put(image);
+            uploadTask.on(
+                'state_changed',
+                (snapshot) => {
+                    const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    setProgress(progress);
+                },
+                (error) => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                        .ref('images')
+                        .child(image.name)
+                        .getDownloadURL()
+                        .then((url) => {
+                            setUrl(url);
+                        });
+                }
+            );
+        }
         console.log('URL :' + url);
     };
 
@@ -58,15 +60,16 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
 
     const handleSubmit = async (e: any, status: any) => {
         e.preventDefault();
-        console.log('1 handle submit');
         var data = {
             name: name,
             description: description,
+            price: price,
+            quentity: quentity,
             url: url
         };
         await handleImageUpload(e);
         // await addProduct(data).then();
-        if(url != ''){
+        if (url != '') {
             await addProduct(data);
             navigate('/staff/all-products');
         }
@@ -103,7 +106,30 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                             }}
                         />
                     </div>
-
+                    <div className="mb-6">
+                        <label className="block mb-2 text-xl font-medium text-gray-600">Price</label>
+                        <input
+                            type="text"
+                            id="large-input"
+                            name="description"
+                            className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                            onChange={(e) => {
+                                setPrice(e.target.value);
+                            }}
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label className="block mb-2 text-xl font-medium text-gray-600">Quentity</label>
+                        <input
+                            type="text"
+                            id="large-input"
+                            name="description"
+                            className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                            onChange={(e) => {
+                                setQuentity(e.target.value);
+                            }}
+                        />
+                    </div>
                     <div className="mb-6 flex justify-center">
                         <div className="rounded-lg shadow-xl bg-gray-50 w-full ">
                             <label className="block mb-2 text-xl font-medium text-gray-600">Upload Image(jpg,png,svg,jpeg)</label>
@@ -128,7 +154,7 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                             onClick={(e) => {
                                 handleSubmit(e, 'post');
                             }}
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full hover:cursor-pointer "
                         >
                             Save
                         </button>
