@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteProduct } from '../../../Services/useProductsService';
 import { ProductProps } from '../../../types/Product';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const ProductListTableRow = (props: ProductProps) => {
+  
+    const { user, dispatch } = useContext(AuthContext);
+    
     const handleDeleteButton = () => {
         //console.log("delete : " + props.productData.id);
         deleteProduct(props.productData.id);
@@ -40,11 +44,13 @@ export const ProductListTableRow = (props: ProductProps) => {
                     <span className="relative">In Stock</span>
                 </span> */}
             </td>
-            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <button onClick={() => handleDeleteButton()} className="bg-red-600 hover:shadow-lg hover:bg-red-800 text-white font-bold py-2 px-4 rounded-full">
-                    Delete
-                </button>
-            </td>
+            {(user.Role == 'inventory_member') && (
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <button onClick={() => handleDeleteButton()} className="bg-red-600 hover:shadow-lg hover:bg-red-800 text-white font-bold py-2 px-4 rounded-full">
+                        Delete
+                    </button>
+                </td>
+            )}
         </tr>
     );
 };

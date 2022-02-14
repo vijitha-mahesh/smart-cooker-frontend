@@ -15,7 +15,7 @@ export const getProducts = async () => {
        // console.log('response: '+response);
         return response;
     });
-};
+}; 
 
 
 export const getProductInformation = async (id: string) => {
