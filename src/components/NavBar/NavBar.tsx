@@ -12,11 +12,6 @@ export default function NavBar() {
 
     const { user, dispatch } = useContext(AuthContext);
 
-    useEffect(() => {
-        console.log(user);
-        console.log(user.Role);
-    }, []);
-
     const handleLogout = () => {
         localStorage.removeItem('userToken');
         //dispatch({ type: 'DeleteUser' });

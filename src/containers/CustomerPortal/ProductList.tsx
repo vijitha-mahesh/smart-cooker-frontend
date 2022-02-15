@@ -7,9 +7,8 @@ export const ProductList = () => {
     const [productData, setProductData] = useState([]);
 
     useEffect(() => {
-          getProducts().then((res) => setProductData(res.data));
+        getProducts().then((res) => setProductData(res.data));
     }, []);
-
 
     return (
         <>
