@@ -19,8 +19,6 @@ export const ProductCard = (props: ProductProps) => {
 
     return (
         <div onClick={() => buttonHandler()}>
-            {/* <div onClick={() => navigate('/product-information/' + props.productData.id)}>  */}
-            {/* <Link to={`/view-products/id=${props.product.id}`}> */}
             <div z-index="0" className="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-xl hover:shadow-blue-200 hover:cursor-pointer">
                 <div>
                     <img alt="product image" src={props.productData.url} z-index="0" className="focus:outline-none w-full h-44" />

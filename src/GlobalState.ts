@@ -1,9 +1,9 @@
-import { createGlobalState } from "react-hooks-global-state";
+import { createGlobalState } from 'react-hooks-global-state';
 
-const {setGlobalState,useGlobalState} = createGlobalState({
+const { setGlobalState, useGlobalState } = createGlobalState({
     selectedProduct: 0,
-    jwt:'',
-    isLogedIn:false
+    jwt: '',
+    isLogedIn: false
 });
 
-export {useGlobalState, setGlobalState};
+export { useGlobalState, setGlobalState };
