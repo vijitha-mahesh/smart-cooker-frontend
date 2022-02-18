@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-const mockApi = 'https://61f7e4bd39431d0017eafae7.mockapi.io/';
 const api = 'https://localhost:44357/api/';
 
 export const getProducts = async () => {

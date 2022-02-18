@@ -46,7 +46,6 @@ export const ProductCard = (props: ProductProps) => {
                         <div className="flex items-center py-10 h-16 overflow-hidden">
                             <h2 z-index="0" className="focus:outline-none text-lg font-semibold ">
                                 {props.productData.name}
-                                {/* Get the product name from props */}
                             </h2>
                             <p z-index="0" className="focus:outline-none text-xs text-gray-600 pl-5">
                                 4 days ago
