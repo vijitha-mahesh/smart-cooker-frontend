@@ -9,9 +9,6 @@ export const ProductCard = (props: ProductProps) => {
 
     const { user, dispatch } = useContext(AuthContext);
 
-    // console.log(user);
-    // console.log(user.Role);
-
     const buttonHandler = () => {
         setGlobalState('selectedProduct', props.productData.id);
         navigate('/product-information');
@@ -19,8 +16,6 @@ export const ProductCard = (props: ProductProps) => {
 
     return (
         <div onClick={() => buttonHandler()}>
-            {/* <div onClick={() => navigate('/product-information/' + props.productData.id)}>  */}
-            {/* <Link to={`/view-products/id=${props.product.id}`}> */}
             <div z-index="0" className="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-xl hover:shadow-blue-200 hover:cursor-pointer">
                 <div>
                     <img alt="product image" src={props.productData.url} z-index="0" className="focus:outline-none w-full h-44" />
@@ -48,7 +43,6 @@ export const ProductCard = (props: ProductProps) => {
                         <div className="flex items-center py-10 h-16 overflow-hidden">
                             <h2 z-index="0" className="focus:outline-none text-lg font-semibold ">
                                 {props.productData.name}
-                                {/* Get the product name from props */}
                             </h2>
                             <p z-index="0" className="focus:outline-none text-xs text-gray-600 pl-5">
                                 4 days ago

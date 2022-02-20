@@ -37,6 +37,7 @@ const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
                 let token = jwt_decode<userToken>(cookie || '') || null;
                 console.log(token.ID);
                 console.log(token.Role);
+                console.log(token);
                 return {
                     ID: token.ID,
                     Role: token.Role

@@ -79,7 +79,7 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
 
     return (
         <div className="h-full w-full">
-            <h1>{progress} asad</h1>
+            {/* <h1>{progress} asad</h1> */}
             <div className="pt-5 pb-5 mb-3">
                 <h1 className="font-bold text-4xl text-center text-sky-700">Add New Product</h1>
             </div>
@@ -90,6 +90,7 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                         <input
                             type="text"
                             id="productName"
+                            required
                             name="Product-name"
                             className="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             onChange={(e) => {
@@ -103,6 +104,7 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                             type="text"
                             id="large-input"
                             name="description"
+                            required
                             className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500"
                             onChange={(e) => {
                                 setDescription(e.target.value);
@@ -114,7 +116,9 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                         <input
                             type="text"
                             id="large-input"
-                            name="description"
+                            name="price"
+                            required
+                            pattern="[0-9]*"
                             className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500"
                             onChange={(e) => {
                                 setPrice(e.target.value);
@@ -126,7 +130,8 @@ const AddNewProduct: React.FunctionComponent<AddNewProductProps> = () => {
                         <input
                             type="text"
                             id="large-input"
-                            name="description"
+                            name="quentity"
+                            required
                             className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500"
                             onChange={(e) => {
                                 setQuentity(e.target.value);

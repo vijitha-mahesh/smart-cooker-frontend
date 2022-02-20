@@ -8,8 +8,6 @@ export const ProductInformation = () => {
     const [productData, setProductData] = useState([]);
 
     const id = useGlobalState('selectedProduct');
-    // console.log(useGlobalState('jwt') + "jwtttttttttttttttttttttttttt");
-
     return (
         <>
         <ProductInformationCard id={id[0]} />; 
