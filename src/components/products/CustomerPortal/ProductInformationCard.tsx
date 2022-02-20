@@ -15,10 +15,9 @@ type productData = {
     quentity: number;
 };
 
-
 export const ProductInformationCard = (props: idProp) => {
     const [productData, setProductData] = useState<productData | null>(null);
-    const [productQuentity, setProductQuentity] = useState(productData?.quentity);
+    const [productQuentity, setProductQuentity] = useState<number| undefined>(productData?.quentity);
     const [selectedOutlet, setSelectedOutlet] = useState('0');
     const [productId, setProductId] = useState('0');
 
@@ -39,9 +38,8 @@ export const ProductInformationCard = (props: idProp) => {
     }, []);
 
     const handleOutletChnage = async (event: React.FormEvent) => {
-
         var a = (event?.target as any).value;
-// debugger;
+        // debugger;
         let qty = await getProductQuentityInOutlet(index, a);
         setProductQuentity(qty);
         setSelectedOutlet(a);
@@ -68,11 +66,11 @@ export const ProductInformationCard = (props: idProp) => {
                                         defaultValue={0}
                                         className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-sky-700 text-base pl-3 pr-10"
                                     >
-                                        <option value='0'>--</option>
-                                        <option value='1'>Colombo</option>
-                                        <option value='2'>Kurunegala</option>
-                                        <option value='3'>Kandy</option>
-                                        <option value='4'>Anuradapura</option>
+                                        <option value="0">--</option>
+                                        <option value="1">Colombo</option>
+                                        <option value="2">Kurunegala</option>
+                                        <option value="3">Kandy</option>
+                                        <option value="4">Anuradapura</option>
                                     </select>
 
                                     <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
@@ -88,7 +86,7 @@ export const ProductInformationCard = (props: idProp) => {
 
                         <div className="flex">
                             <span className="title-font font-medium text-2xl  text-gray-900">RS. {productData?.price}.00</span>
-                            {user && <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy Now</button>}
+                            { user && <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy Now</button>}
                         </div>
                     </div>
                 </div>

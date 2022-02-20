@@ -4,7 +4,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     selectedProduct: 0,
     jwt: '',
     isLogedIn: false,
-    selectedOutlet: ''
+    selectedOutlet: '0'
 });
 
 export { useGlobalState, setGlobalState };

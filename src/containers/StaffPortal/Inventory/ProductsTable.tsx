@@ -10,7 +10,7 @@ export default function ProductsTable() {
 
     useEffect(() => {
         // Update the document title using the browser API
-        getProducts().then((res) => setProductData(res.data));
+        getProducts(0).then((res) => setProductData(res.data));
     }, []);
 
     return (

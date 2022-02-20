@@ -9,9 +9,6 @@ export const ProductCard = (props: ProductProps) => {
 
     const { user, dispatch } = useContext(AuthContext);
 
-    // console.log(user);
-    // console.log(user.Role);
-
     const buttonHandler = () => {
         setGlobalState('selectedProduct', props.productData.id);
         navigate('/product-information');

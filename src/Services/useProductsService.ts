@@ -2,17 +2,14 @@ import axios from 'axios';
 
 const api = 'https://localhost:44357/api/';
 
-export const getProducts = async () => {
+export const getProducts = async (id: number) => {
     //console.log('get requst');
     return await axios({
         method: 'get',
-        url: api + 'products',
+        url: api + `products/productsinoutlet/${id}`,
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(function (response) {
-        // console.log('response: '+response);
-        return response;
     });
 };
 
