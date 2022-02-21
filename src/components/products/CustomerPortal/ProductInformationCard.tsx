@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
+import { createOrder } from '../../../Services/useOrderService';
 import { getProductInformation, getProductQuentityInOutlet } from '../../../Services/useProductsService';
+import { OrderCreateDto } from '../../../types/Product';
 
 export type idProp = {
     id: number;
@@ -15,11 +18,25 @@ type productData = {
     quentity: number;
 };
 
+var a: productData = {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    url: '',
+    quentity: 0
+};
+
 export const ProductInformationCard = (props: idProp) => {
-    const [productData, setProductData] = useState<productData | null>(null);
-    const [productQuentity, setProductQuentity] = useState<number| undefined>(productData?.quentity);
+    const [productData, setProductData] = useState<productData>(a);
+    const [productQuentity, setProductQuentity] = useState<number | undefined>(productData?.quentity);
+    // const [productQuentity, setProductQuentity] = useState<number | undefined>(productData?.quentity);
     const [selectedOutlet, setSelectedOutlet] = useState('0');
     const [productId, setProductId] = useState('0');
+
+    const [productCount, setProductCount] = useState(0);
+    const [totalAmount, settotalAmount] = useState(0);
+    const navigate = useNavigate();
 
     let index = props.id.toString();
 
@@ -37,12 +54,46 @@ export const ProductInformationCard = (props: idProp) => {
             });
     }, []);
 
+    useEffect(() => {
+        settotalAmount(productCount * productData?.price);
+    }, [productCount]);
+
     const handleOutletChnage = async (event: React.FormEvent) => {
         var a = (event?.target as any).value;
         // debugger;
         let qty = await getProductQuentityInOutlet(index, a);
         setProductQuentity(qty);
         setSelectedOutlet(a);
+    };
+
+    const handleDecrement = () => {
+        if (productCount > 0) {
+            setProductCount(productCount - 1);
+        }
+    };
+
+    const handleIncreament = () => {
+        if (productCount < productData?.quentity) {
+            setProductCount(productCount + 1);
+        }
+    };
+
+    const handleOrderProcess = () => {
+        var data: OrderCreateDto = {
+            outletId: parseInt(selectedOutlet),
+            productId: props.id,
+            userId: user.ID,
+            product_Order_Qty: productCount,
+            totalAmount: totalAmount
+        };
+        createOrder(data)
+            .then(function () {
+                alert('order is sucess');
+            })
+            .catch(function (response) {
+                alert('somthing went wrong');
+                navigate('/');
+            });
     };
 
     return (
@@ -86,7 +137,26 @@ export const ProductInformationCard = (props: idProp) => {
 
                         <div className="flex">
                             <span className="title-font font-medium text-2xl  text-gray-900">RS. {productData?.price}.00</span>
-                            { user && <button className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded">Buy Now</button>}
+                        </div>
+                        <h1 className="text-gray-700 font-bold text-xl">Total price : {totalAmount}</h1>
+                        <div className="flex pt-5">
+                            <button onClick={() => handleDecrement()} className="px-5  h-12 bg-sky-500  text-white text-xs font-bold  rounded">
+                                <h1 className="text-2xl">-</h1>
+                            </button>
+                            <h3 className="py-2 px-5 text-2xl">{productCount}</h3>
+                            <button onClick={() => handleIncreament()} className="px-5  h-12 bg-sky-500  text-white text-xs font-bold  rounded">
+                                <h1 className="text-2xl">+</h1>
+                            </button>
+                            {user && (
+                                <button
+                                    onClick={() => {
+                                        handleOrderProcess();
+                                    }}
+                                    className="flex ml-auto text-white text-xl bg-blue-500 border-0 py-2 mt-3 px-6 focus:outline-none hover:bg-sky-700 rounded"
+                                >
+                                    Buy Now
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -21,10 +21,9 @@ export const ProductList = () => {
     const handleOutletChnage = (event: React.FormEvent) => {
         var a = (event?.target as any).value;
 
-            getProducts(a).then((res) => {
-                setProductData(res.data);
-            });
-        
+        getProducts(a).then((res) => {
+            setProductData(res.data);
+        });
     };
 
     return (

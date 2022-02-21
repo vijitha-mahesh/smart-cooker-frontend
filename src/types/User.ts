@@ -1,8 +1,10 @@
 export type UserProps = {
-
-        id: number;
-        name: string;
-        role: string;
-        phoneNumber: string;
-    
+    id: number;
+    nic: string;
+    role: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    profilePictureUrl: string;
 };

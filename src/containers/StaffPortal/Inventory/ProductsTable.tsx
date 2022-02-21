@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProductListTableRow } from '../../../components/products/StaffPortal/ProductListTableRow';
+import { AuthContext } from '../../../contexts/AuthContext';
 import { getProducts } from '../../../Services/useProductsService';
 
 export default function ProductsTable() {
     const [productData, setProductData] = useState([]);
     const navigate = useNavigate();
     // const service = useProductsService();
+    const { user, dispatch } = useContext(AuthContext);
 
     useEffect(() => {
         // Update the document title using the browser API
@@ -20,17 +22,18 @@ export default function ProductsTable() {
                     <div>
                         <h2 className="text-sky-700 text-4xl font-semibold pl-40">All Products</h2>
                     </div>
-
-                    <div className="flex items-center justify-between">
-                        <div className="lg:ml-40 ml-10 space-x-8">
-                            <button
-                                onClick={() => navigate('/add-new-product')}
-                                className="bg-indigo-600 px-4 py-2 mr-16 rounded-md text-white font-semibold tracking-wide cursor-pointer hover:shadow-lg"
-                            >
-                                Create New Product
-                            </button>
+                    {user.Role == 'inventory_member' && user && (
+                        <div className="flex items-center justify-between">
+                            <div className="lg:ml-40 ml-10 space-x-8">
+                                <button
+                                    onClick={() => navigate('/add-new-product')}
+                                    className="bg-indigo-600 px-4 py-2 mr-16 rounded-md text-white font-semibold tracking-wide cursor-pointer hover:shadow-lg"
+                                >
+                                    Create New Product
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
                 <div className="flex ml-6 items-center p-5 pl-20">
                     <span className="mr-3 text-xl font-semibold">Select Outlet</span>
