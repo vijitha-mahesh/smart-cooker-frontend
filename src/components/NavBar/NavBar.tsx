@@ -4,7 +4,7 @@ import NavLogo from '../../assets/Images/NavLogo.png';
 import { AuthContext } from '../../contexts/AuthContext';
 import profileImage from '../../assets/Images/profile.png';
 
-export default function NavBar() {
+export default function NavBar() { 
     const button = document.querySelector('#menu-button'); // Hamburger Icon
     const menu = document.querySelector('#menu'); // Menu
 

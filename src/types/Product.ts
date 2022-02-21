@@ -6,3 +6,11 @@ export type ProductProps = {
         url: string;
     };
 };
+
+export type OrderCreateDto = {
+    productId: number;
+    outletId: number;
+    userId: number;
+    product_Order_Qty: number;
+    totalAmount: number;
+};

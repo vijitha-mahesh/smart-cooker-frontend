@@ -5,9 +5,8 @@ import { ProductProps } from '../../../types/Product';
 import { AuthContext } from '../../../contexts/AuthContext';
 
 export const ProductListTableRow = (props: ProductProps) => {
-  
     const { user, dispatch } = useContext(AuthContext);
-    
+
     const handleDeleteButton = () => {
         //console.log("delete : " + props.productData.id);
         deleteProduct(props.productData.id);
@@ -39,12 +38,8 @@ export const ProductListTableRow = (props: ProductProps) => {
                 <div className="bg-green-300 text-center p-2 rounded-full">
                     <p className="text-base">InStock</p>
                 </div>
-                {/* <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                    <span className="relative">In Stock</span>
-                </span> */}
             </td>
-            {(user.Role == 'inventory_member') && (
+            {user.Role == 'inventory_member' && (
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <button onClick={() => handleDeleteButton()} className="bg-red-600 hover:shadow-lg hover:bg-red-800 text-white font-bold py-2 px-4 rounded-full">
                         Delete

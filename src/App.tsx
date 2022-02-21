@@ -9,27 +9,28 @@ import AllProducts from './pages/StaffPortal/AllProducts';
 import { ProductInformation } from './containers/Common/ProductInformation';
 import AuthContextProvider from './contexts/AuthContext';
 import ProfilePage from './pages/Common/ProfilePage';
-
+import TransactionHistory from './pages/CustomerPortal/TransactionHistory';
 
 function App() {
     return (
         <div className="App">
             <AuthContextProvider>
                 <BrowserRouter>
-                    <NavBar/>
+                    <NavBar />
                     <Routes>
                         {/* common routes */}
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/profile" element={<ProfilePage/>} />
+                        <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/product-information" element={<ProductInformation />} />
 
                         {/* staff routes */}
                         <Route path="/add-new-product" element={<AddProduct />} />
                         <Route path="/staff/all-products" element={<AllProducts />} />
+
                         {/* customer routes */}
-                        {/*test routs*/}
+                        <Route path="/transaction-history" element={<TransactionHistory />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
